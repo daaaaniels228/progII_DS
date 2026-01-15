@@ -22,6 +22,12 @@ for country in responseParsed:
         popMaxName = country["name"]["common"]
     print(country["name"]["common"])
 
+responseLatvia = requests.get("https://restcountries.com/v3.1/name/latvia?fields=borders,subregion")
+responseLatviaText = responseLatvia.text
+responseLvParsed = json.loads(responseLatviaText)
+
+print(f"Latvijas subregions ir - {responseLvParsed[0]["subregion"]} un tā robežojas {responseLvParsed[0]["borders"]}")
+
 print(f"Kopējais valstu skaits ir {len(responseParsed)} populacija {popSum/len(responseParsed)}")
 print(popMax,popMaxName)
 print(areaSum)
